@@ -1,0 +1,1 @@
+ALTER TABLE `lintasan_operasi`  ADD `created_at` TIMESTAMP NOT NULL  AFTER `keterangan`,  ADD `update_at` TIMESTAMP NOT NULL  AFTER `created_at`;
