@@ -20,7 +20,7 @@
 		<div class="card">                 
 
 			<div class="card-body">                     
-				<form method="post" class="form-horizontal" action="{{ route('realisasipengisianbbm.update', $realisasipengisianbbm->id_realisasi_pengisian_bbm) }}" id="myForm" >
+				<form method="post" class="form-horizontal" action="{{ route('realisasipengisianbbm.update', $realisasipengisianbbm->id_realisasi_pengisian_bbm) }}" enctype="multipart/form-data" >
 					@csrf                         
 					@method('PUT')                         
 					<div class="form-group">
@@ -74,7 +74,7 @@
 						@if($realisasipengisianbbm->foto_bukti1)
 						<img id="original" src="{{ url($path.$realisasipengisianbbm->foto_bukti1) }}" height="70" width="70" data-toggle="modal" data-target="#myModal" style="cursor:pointer; margin-bottom: 10px;">
 						@endif
-						<input type="file" name="foto_bukti1" class="form-control" value="{{ $$realisasipengisianbbm->foto_bukti1 ?? ''  }}"">
+						<input type="file" name="foto_bukti1" class="form-control" value="{{ $realisasipengisianbbm->foto_bukti1 ?? ''  }}" >
 					</div>
 					
 					<div class="form-group">     
