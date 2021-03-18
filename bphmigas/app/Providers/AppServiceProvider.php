@@ -34,7 +34,7 @@ class AppServiceProvider extends ServiceProvider
                 $hak_akses = Auth::user()->hak_akses;             
                 $event->menu->add('Hak Akses: '.strtoupper($hak_akses));             
                 $event->menu->add('MENU');             
-                if ($hak_akses=="administrator") {                 
+                if ($hak_akses=="admin") {                 
                     $event->menu->add(                     
                         [                        
                         'text' => 'Asosiasi Kapal',  
@@ -73,32 +73,42 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'fas fa-fw fa-anchor'                     
                         ],
 
-                         [                        
+                        [                        
                         'text' => 'Realisasi Pengisian',  
                         'url'  => 'realisasipengisianbbm',  
                         'icon' => 'fas fa-fw fa-battery-half'                     
+                        ],   
+
+                        [                        
+                        'text' => 'Usulan Kuota',  
+                        'url'  => 'usulankuotaperperiode',  
+                        'icon' => 'fas fa-fw fa-file'                     
+                        ],  
+
+                        [                        
+                        'text' => 'Periode',  
+                        'url'  => 'periode',  
+                        'icon' => 'fas fa-fw fa-calendar'  ,
+                        //'can' => 'add-blog-post'                   
                         ],
+
+                       
                     );             
-                } else if ($hak_akses=="petugas") {                 
+                } else if ($hak_akses=="user") {                 
                     $event->menu->add(                     
-                        [                         
-                            'text' => 'Pembayaran', 
-                            'url'  => 'pembayaran', 
-                            'icon' => 'fas fa-fw fa-cash-register'                     
-                        ],                     
-                        [                         
-                            'text' => 'History Pembayaran', 
-                            'url'  => 'history', 
-                            'icon' => 'fas fa-fw fa-history'                     
-                        ]                 
+                          [                        
+                        'text' => 'Realisasi Pengisian',  
+                        'url'  => 'realisasipengisianbbm',  
+                        'icon' => 'fas fa-fw fa-battery-half'                     
+                        ],           
                     );             
                 } else {                 
                     $event->menu->add(                     
-                        [                         
-                            'text' => 'History Pembayaran',  
-                            'url'  => 'history',  
-                            'icon' => 'fas fa-fw fa-history'                     
-                        ]                 
+                        [                        
+                        'text' => 'No Hak Akses',  
+                        'url'  => '',  
+                        'icon' => 'fas fa-fw fa-battery-half'                     
+                        ],                
                     );             
                 }         
             });     

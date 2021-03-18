@@ -17,4 +17,8 @@ class LintasanOperasi extends Model
     protected $fillable = ['lintasan_operasi', 'keterangan'];
     public $sortable = ['lintasan_operasi'];
 
+    public function usulankuota(){
+     return $this->hasMany(Usulankuota::class);
+    }
+
 }

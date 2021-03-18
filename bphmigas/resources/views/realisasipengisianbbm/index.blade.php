@@ -31,9 +31,9 @@
 			</div>
 			@endif   -->
 
-			<div class="card-body">                     
-				<table class="table table-bordered table-responsive">                         
-					<thead>                             
+			<div class="card-body table-responsive">                     
+				<table class="table table-bordered">                         
+					<thead class="thead-light">                             
 						<tr>                                 
 							<th style="width: 20px">#</th>                                 
 							<th>@sortablelink('id_kapal', 'Nama Kapal')</th>
@@ -42,7 +42,7 @@
 							<th>@sortablelink('tanggal_pengisian', 'Tanggal')</th>
 							<th> Jumlah</th>                                    
 							<th>Foto Bukti</th>                                 
-							<th style="width: 16%">Aksi</th>                             
+							<th>Aksi</th>                             
 						</tr>                         
 					</thead>                         
 					<tbody>                             
@@ -74,12 +74,21 @@
 								-- 
 								@else
 								<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Lihat Bukti</button>
-								        
+
 								@endif                          
 							</td>                                     
-							<td>
+							<td class="text-center">
 								<form action="{{ route('realisasipengisianbbm.destroy', $item->id_realisasi_pengisian_bbm) }}" method="POST">
 									
+
+									@if(Auth::user()->hak_akses != "admin")
+
+									<a class="btn btn-success" href="{{ route('realisasipengisianbbm.show',$item->id_realisasi_pengisian_bbm) }}"> <i class="fas fa-eye"></i></a>
+
+									<a class="btn btn-primary" href="{{ route('realisasipengisianbbm.edit',$item->id_realisasi_pengisian_bbm) }}"> <i class="fas fa-edit"></i></a>
+
+									@else
+
 									<a class="btn btn-success" href="{{ route('realisasipengisianbbm.show',$item->id_realisasi_pengisian_bbm) }}"> <i class="fas fa-eye"></i></a>
 
 									<a class="btn btn-primary" href="{{ route('realisasipengisianbbm.edit',$item->id_realisasi_pengisian_bbm) }}"> <i class="fas fa-edit"></i></a>
@@ -89,6 +98,7 @@
 
 									<button type="submit" title="delete" class="btn btn-danger" onclick="return confirm('Anda yakin untuk menghapus ?')">
 										<i class="fas fa-trash"></i></button>
+										@endif
 
 									</form>                            
 								</td>
@@ -110,20 +120,20 @@
 	</div> 
 
 
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-lg">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-body">
-        <img width="100%" src="{{ url($path.$item->foto_bukti1) }}">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
+	<!-- Modal -->
+	<div id="myModal" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-lg">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-body">
+					<img width="100%" src="{{ url($path.$item->foto_bukti1) }}">
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	@stop 
 	@section('plugins.Sweetalert2', true)

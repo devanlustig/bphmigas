@@ -32,4 +32,8 @@ class Kapal extends Model
      return $this->hasMany(RealisasiPengisianBbm::class);
     }
 
+     public function usulankuota(){
+     return $this->hasMany(Usulankuota::class);
+    }
+
 }

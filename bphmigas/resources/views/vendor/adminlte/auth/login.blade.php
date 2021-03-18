@@ -76,21 +76,26 @@
 @stop
 
 @section('auth_footer')
-    {{-- Password reset link --}}
-    @if($password_reset_url)
-        <p class="my-0">
-            <a href="{{ $password_reset_url }}">
-                {{ __('adminlte::adminlte.i_forgot_my_password') }}
-            </a>
-        </p>
-    @endif
+   
 
     {{-- Register link --}}
     @if($register_url)
-        <p class="my-0">
-            <a href="{{ $register_url }}">
-                {{ __('adminlte::adminlte.register_a_new_membership') }}
+       
+            <a href="{{ $register_url }}" class="btn btn-flat btn-success" >
+                <?php /* {{ __('adminlte::adminlte.register_a_new_membership') }} */ ?>
+              <i class="fas fa-sign-out-alt"></i>  Daftar
+
             </a>
-        </p>
+        
+    @endif
+
+     {{-- Password reset link --}}
+    @if($password_reset_url)
+        
+            <a href="{{ $password_reset_url }}" style="float:right;">
+               <?php /* {{ __('adminlte::adminlte.i_forgot_my_password') }} */ ?>
+               Lupa Kata Sandi
+            </a>
+       
     @endif
 @stop

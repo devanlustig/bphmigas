@@ -14,8 +14,12 @@ class Controller extends BaseController
 	public function index()
 	{
 		$user = Auth::user()->name;
-		return view('profile', compact('user'));
+		if($user){
+			return view('profile', compact('user'));
+		}
+		else{
+			return '/login';
+		}
 	}
-
 }
 

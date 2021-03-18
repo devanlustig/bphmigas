@@ -14,9 +14,9 @@ return [
     |
     */
 
-    'title' => 'BPHMIGAS',
-    'title_prefix' => 'BPH MIGAS',
-    'title_postfix' => 'BPH MIGAS',
+    'title' => 'BPH MIGAS',
+    'title_prefix' => '',
+    'title_postfix' => '',
 
     /*
     |--------------------------------------------------------------------------

@@ -11,14 +11,18 @@ use Illuminate\Support\Facades\Storage;
 
 class RealisasiPengisianBbmController extends Controller
 {
-	public function index()
-	{
-        $path = "/bphmigas/public/realisasipengisianbbm/";
-        $realisasipengisianbbm = RealisasiPengisianBbm::sortable()->paginate(5);
+    // public function __construct() {
+    //     $this->middleware('user')->only('index');
+    // }
 
-        return view('realisasipengisianbbm.index',compact('realisasipengisianbbm','path'))
-        ->with('i', (request()->input('page', 1) - 1) * 5);
-    }
+   public function index()
+   {
+    $path = "/bphmigas/public/realisasipengisianbbm/";
+    $realisasipengisianbbm = RealisasiPengisianBbm::sortable()->paginate(5);
+
+    return view('realisasipengisianbbm.index',compact('realisasipengisianbbm','path'))
+    ->with('i', (request()->input('page', 1) - 1) * 5);
+}
 
     /**
      * Show the form for creating a new resource.
@@ -63,7 +67,7 @@ class RealisasiPengisianBbmController extends Controller
     public function show(RealisasiPengisianBbm $realisasipengisianbbm)
     {
         $path = "/bphmigas/public/realisasipengisianbbm/";
-    	return view('realisasipengisianbbm.detail', compact('realisasipengisianbbm','path'));
+        return view('realisasipengisianbbm.detail', compact('realisasipengisianbbm','path'));
     }
 
     /**
@@ -114,31 +118,31 @@ class RealisasiPengisianBbmController extends Controller
         if($request->foto_bukti1 != ''){        
             $path = "bphmigas/public/realisasipengisianbbm/";
           //code for remove old file
-          if($pengisian != ''  && $pengisian != null){
-            /* $path = public_path().'/realisasipengisianbbm/'; */
-            $buktiname = "foto_bukti".time().'.'.$bukti->extension();
-            $bukti->move(public_path('realisasipengisianbbm'),$buktiname);
-            $file_old = $path.$realisasipengisianbbm->foto_bukti1;
-            unlink($file_old);
-            $realisasipengisianbbm->foto_bukti1 = $buktiname;
-            $realisasipengisianbbm->update();
+            if($pengisian != ''  && $pengisian != null){
+                /* $path = public_path().'/realisasipengisianbbm/'; */
+                $buktiname = "foto_bukti".time().'.'.$bukti->extension();
+                $bukti->move(public_path('realisasipengisianbbm'),$buktiname);
+                $file_old = $path.$realisasipengisianbbm->foto_bukti1;
+                unlink($file_old);
+                $realisasipengisianbbm->foto_bukti1 = $buktiname;
+                $realisasipengisianbbm->update();
+            }
         }
-    }
 
-    $update['id_kapal'] = $request->get('id_kapal');
-    $update['id_tbbm'] = $request->get('id_tbbm');
-    $update['id_periode'] = $request->get('id_periode');
-    $update['tanggal_pengisian'] = $request->get('tanggal_pengisian');
-    $update['jumlah_pengisian'] = $request->get('jumlah_pengisian');
-  
+        $update['id_kapal'] = $request->get('id_kapal');
+        $update['id_tbbm'] = $request->get('id_tbbm');
+        $update['id_periode'] = $request->get('id_periode');
+        $update['tanggal_pengisian'] = $request->get('tanggal_pengisian');
+        $update['jumlah_pengisian'] = $request->get('jumlah_pengisian');
 
-    $realisasipengisianbbm->update($update);
+
+        $realisasipengisianbbm->update($update);
 
 
         //jika data berhasil diupdate, akan kembali ke halaman utama
-    return redirect()->route('realisasipengisianbbm.index')
-    ->with('success', 'pengisian Berhasil Diupdate');
-}
+        return redirect()->route('realisasipengisianbbm.index')
+        ->with('success', 'pengisian Berhasil Diupdate');
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -167,9 +171,9 @@ class RealisasiPengisianBbmController extends Controller
 public function caripengisian(Request $request)
 {
 
- $cari = $request->q;
- $realisasipengisianbbm = RealisasiPengisianBbm::where('id_realisasi_pengisian_bbm','like',"%".$cari."%")->paginate(2);
- return view('realisasipengisianbbm.index',compact('realisasipengisianbbm'));
+   $cari = $request->q;
+   $realisasipengisianbbm = RealisasiPengisianBbm::where('id_realisasi_pengisian_bbm','like',"%".$cari."%")->paginate(2);
+   return view('realisasipengisianbbm.index',compact('realisasipengisianbbm'));
 
      // mengirim data pegawai ke view index
        //return view('index',['pengisian' => $pengisian]);
@@ -193,25 +197,25 @@ public function upload(Request $request){
 
     $this->validate($request, $rules, $customMessages);
 
-     $name = $request->foto_bukti1;
-     $bukti = $request->file('foto_bukti1');
-     $buktiname = "foto_bukti".time().'.'.$bukti->extension();
-     $bukti->move(public_path('realisasipengisianbbm'),$buktiname);
+    $name = $request->foto_bukti1;
+    $bukti = $request->file('foto_bukti1');
+    $buktiname = "foto_bukti".time().'.'.$bukti->extension();
+    $bukti->move(public_path('realisasipengisianbbm'),$buktiname);
 
 
-     $save = new RealisasiPengisianBbm;
+    $save = new RealisasiPengisianBbm;
 
-     $save->foto_bukti1 = $buktiname;
-     $save->id_kapal = $request->id_kapal;
-     $save->id_tbbm = $request->id_tbbm;
-     $save->id_periode = $request->id_periode;
-     $save->tanggal_pengisian = $request->tanggal_pengisian;
-     $save->jumlah_pengisian = $request->jumlah_pengisian;
-     $save->save();
+    $save->foto_bukti1 = $buktiname;
+    $save->id_kapal = $request->id_kapal;
+    $save->id_tbbm = $request->id_tbbm;
+    $save->id_periode = $request->id_periode;
+    $save->tanggal_pengisian = $request->tanggal_pengisian;
+    $save->jumlah_pengisian = $request->jumlah_pengisian;
+    $save->save();
 
- return redirect()->route('realisasipengisianbbm.index')
- ->with('success','Data Realisasi telah ditambahkan');
- /* return redirect()->back(); */
+    return redirect()->route('realisasipengisianbbm.index')
+    ->with('success','Data Realisasi telah ditambahkan');
+    /* return redirect()->back(); */
 
 
 }

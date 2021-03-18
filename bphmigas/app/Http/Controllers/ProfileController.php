@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 
 class ProfileController extends Controller
 {
@@ -13,7 +14,10 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user()->name;
+        if($user){
+            return view('profile', compact('user'));
+        }
     }
 
     /**
