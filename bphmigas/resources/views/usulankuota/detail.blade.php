@@ -21,10 +21,10 @@
                     </div>
                     <div class="col-6">
                         <ul class="list-group list-group-flush">
-                             <li class="list-group-item"><b>Kecepatan: </b>{{number_format($usulankuotaperperiode->kecepatan,2)}}</li>
-                            <li class="list-group-item"><b>Jarak: </b>{{$usulankuotaperperiode->jarak}}</li>
+                             <li class="list-group-item"><b>Kecepatan: </b>{{number_format($usulankuotaperperiode->kecepatan,3)}}</li>
+                            <li class="list-group-item"><b>Jarak: </b>{{number_format($usulankuotaperperiode->jarak,3)}}</li>
                             <li class="list-group-item"><b>Jumlah Trip: </b>{{$usulankuotaperperiode->jumlah_trip}}</li>
-                            <li class="list-group-item"><b>Kuota: </b>{{$usulankuotaperperiode->kuota}}</li>
+                            <li class="list-group-item"><b>Kuota: </b>{{number_format($usulankuotaperperiode->kuota,5)}}</li>
                        </ul>
                    </div>
                </div>

@@ -69,12 +69,12 @@
 							</td> 
 
 							<td>
-								{{ number_format($item->kecepatan, 2) }}
+								{{ number_format($item->kecepatan, 3) }}
 								                       
 							</td> 
 
 							<td>                                     
-								{{ $item->jarak }}                                 
+								{{ number_format($item->jarak, 3) }}                                 
 							</td> 
 
 							<td>                                     
@@ -82,7 +82,7 @@
 							</td> 
 
 							<td>                                     
-								{{ $item->kuota }}                                 
+								{{ number_format($item->kuota, 5) }}                                 
 							</td> 
 							
 
