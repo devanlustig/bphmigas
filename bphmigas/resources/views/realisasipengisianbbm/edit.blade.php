@@ -45,14 +45,17 @@
 						</select>
 					</div>
 
-					
+					<div class="form-group">
+						<label for="id_periode"> Periode </label>
+						<select class="form-control" name="id_periode">
+							@foreach ($periode as $keyperiode => $valueperiode)
+							<option value="{{ $keyperiode }}" {{ ( $keyperiode == $getperiodeID) ? 'selected' : '' }}> 
+								{{ $valueperiode }}
+							</option>
+							@endforeach
+						</select>
+					</div>
 
-					<div class="form-group">     
-						<label for="id_periode" class="col-sm-2 control-label">Periode</label>     
-						<div class="col-sm-10">         
-							<input type="text" name="id_periode" class="form-control" value="{{ $realisasipengisianbbm->id_periode ?? ''  }}" >     
-						</div> 
-					</div> 
 
 					<div class="form-group">     
 						<label for="tanggal_pengisian" class="col-sm-2 control-label">Tanggal Pengisian</label>     
@@ -64,7 +67,7 @@
 
 					<div class="form-group">     
 						<label for="jumlah_pengisian" class="col-sm-2 control-label">Jumlah</label>     
-						<div class="col-sm-10">         
+						<div class="col-sm-3">         
 							<input type="text" name="jumlah_pengisian" class="form-control" value="{{ $realisasipengisianbbm->jumlah_pengisian ?? ''  }}" >     
 						</div> 
 					</div> 
@@ -74,7 +77,9 @@
 						@if($realisasipengisianbbm->foto_bukti1)
 						<img id="original" src="{{ url($path.$realisasipengisianbbm->foto_bukti1) }}" height="70" width="70" data-toggle="modal" data-target="#myModal" style="cursor:pointer; margin-bottom: 10px;">
 						@endif
-						<input type="file" name="foto_bukti1" class="form-control" value="{{ $realisasipengisianbbm->foto_bukti1 ?? ''  }}" >
+						<div class="col-sm-3"> 
+							<input type="file" name="foto_bukti1" class="form-control" value="{{ $realisasipengisianbbm->foto_bukti1 ?? ''  }}" >
+						</div>
 					</div>
 					
 					<div class="form-group">     
@@ -91,17 +96,17 @@
 </div>
 
 <div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-lg">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-body">
-        <img width="100%" src="{{ url($path.$realisasipengisianbbm->foto_bukti1) }}">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
+	<div class="modal-dialog modal-lg">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-body">
+				<img width="100%" src="{{ url($path.$realisasipengisianbbm->foto_bukti1) }}">
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
 </div>
 
 @stop

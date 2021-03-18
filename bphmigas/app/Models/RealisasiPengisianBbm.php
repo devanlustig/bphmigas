@@ -26,4 +26,8 @@ class RealisasiPengisianBbm extends Model
      public function tbbm(){
      return $this->belongsTo(Tbbm::class,'id_tbbm');
     }
+
+    public function periode(){
+     return $this->belongsTo(Periode::class,'id_periode');
+    }
 }

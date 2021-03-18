@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\RealisasiPengisianBbm;
 use App\Models\Kapal;
 use App\Models\Tbbm;
+use App\Models\Periode;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -33,7 +34,8 @@ class RealisasiPengisianBbmController extends Controller
     {
     	$kapal = Kapal::all(['id_kapal','nama_kapal']);
     	$tbbm = Tbbm::all(['id_tbbm','nama_tbbm']);
-    	return view('realisasipengisianbbm.create',compact('kapal','tbbm'));
+        $periode = Periode::all(['id_periode','nama_periode']);
+    	return view('realisasipengisianbbm.create',compact('kapal','tbbm','periode'));
     }
 
     /**
@@ -47,6 +49,7 @@ class RealisasiPengisianBbmController extends Controller
     	$request->validate([
     		'id_kapal' => 'required',
     		'id_tbbm' => 'required',
+            'id_periode' => 'required',
     		'tanggal_pengisian' => 'required',
     		'jumlah_pengisian'=>'required',
 
@@ -85,7 +88,10 @@ class RealisasiPengisianBbmController extends Controller
         $tbbm = Tbbm::pluck('nama_tbbm','id_tbbm');
         $gettbbmID = $realisasipengisianbbm->id_tbbm;
 
-        return view('realisasipengisianbbm.edit', compact('realisasipengisianbbm','kapal','tbbm','getkapalID','gettbbmID','path'));
+        $periode = Periode::pluck('nama_periode','id_periode');
+        $getperiodeID = $realisasipengisianbbm->id_periode;
+
+        return view('realisasipengisianbbm.edit', compact('realisasipengisianbbm','kapal','tbbm','getkapalID','gettbbmID','path','periode','getperiodeID'));
     }
 
     /**

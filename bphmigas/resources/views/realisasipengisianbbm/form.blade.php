@@ -24,12 +24,17 @@
 </div>
   </div>
 
-  <div class="form-group">     
-	<label for="id_periode" class="col-sm-2 control-label">Periode</label>     
-	<div class="col-sm-10">         
-		<input type="text" name="id_periode" class="form-control" value="{{ $id_periode ?? ''  }}" >     
-	</div> 
-</div> 
+  <div class="form-group">
+    <label for="id_periode" class="col-sm-2 control-label">Periode</label>
+    <div class="col-sm-10">
+    <select class="form-control" name="id_periode">
+      <option> -- Pilih -- </option>
+      @foreach($periode as $item)
+        <option value="{{ $item->id_periode }}">{{$item->nama_periode}}</option>
+      @endforeach
+    </select>
+</div>
+  </div>
 
 <div class="form-group">     
   <label for="tanggal_pengisian" class="col-sm-2 control-label">Tanggal Pengisian</label>     
@@ -41,14 +46,16 @@
 
 	<div class="form-group">     
 	<label for="jumlah_pengisian" class="col-sm-2 control-label">Jumlah</label>     
-	<div class="col-sm-10">         
+	<div class="col-sm-3">         
 		<input type="text" name="jumlah_pengisian" class="form-control" value="{{ $jumlah_pengisian ?? ''  }}" >     
 	</div> 
 </div> 
 
 <div class="form-group">
-<label for="foto_bukti1" class="col-sm-2 control-label">Upload Bukti</label>   
+<label for="foto_bukti1" class="col-sm-2 control-label">Upload Bukti</label>
+<div class="col-sm-3">   
 <input type="file" name="foto_bukti1" class="form-control">
+</div>
 </div>
 	
 	<div class="form-group">     

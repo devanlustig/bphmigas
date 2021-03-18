@@ -22,4 +22,8 @@ class Periode extends Model
      return $this->hasMany(Usulankuota::class);
     }
 
+    public function realisasipengisianbbm(){
+     return $this->hasMany(RealisasiPengisianBbm::class);
+    }
+
 }
