@@ -4,7 +4,7 @@
     <div class="row mt-5 mb-5">
         <div class="col-lg-12 margin-tb">
             <div class="float-left">
-                <h2>Tutorial CRUD Laravel 8 untuk Pemula - Ilmucoding.com</h2>
+                <h2>Tutorial CRUD Laravel 8</h2>
             </div>
             <div class="float-right">
                 <a class="btn btn-success" href="{{ route('posts.create') }}"> Create Post</a>
@@ -22,12 +22,14 @@
         <tr>
             <th width="20px" class="text-center">No</th>
             <th>Title</th>
+              <th>Konten</th>
             <th width="280px"class="text-center">Action</th>
         </tr>
         @foreach ($posts as $post)
         <tr>
             <td class="text-center">{{ ++$i }}</td>
             <td>{{ $post->title }}</td>
+             <td>{{ $post->content }}</td>
             <td class="text-center">
                 <form action="{{ route('posts.destroy',$post->id) }}" method="POST">
  

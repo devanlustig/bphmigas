@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\AsosiasiKapalController;
 use App\Http\Controllers\KapalController;
 use App\Http\Controllers\PemilikController;
@@ -59,6 +60,7 @@ Route::middleware(['auth'])->group(function () {
 		Route::resource('asosiasikapal', AsosiasiKapalController::class);
 
 		Route::resource('kapal', KapalController::class);
+		Route::resource('posts', PostController::class);
 
 		Route::get('/cariusulan', [UsulanKuotaPerPeriodeController::class, 'cariusulan']);
 		Route::resource('usulankuotaperperiode', UsulanKuotaPerPeriodeController::class);

@@ -27,7 +27,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -38,7 +38,19 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+        'title' => 'required|max:50',
+
+    ]);
+
+     $test= "overide from form";   
+     $request->request->add(['content' => $request->ip()]);
+     $request->request->add(['title' => $test]);
+
+     Post::create($request->all());
+
+     return redirect()->route('posts.index')
+     ->with('success','Data Post telah ditambahkan');
     }
 
     /**
