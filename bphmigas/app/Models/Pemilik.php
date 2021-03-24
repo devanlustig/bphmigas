@@ -16,7 +16,7 @@ class Pemilik extends Model
     protected $table= "pemilik";
     protected $primaryKey = 'id_pemilik';
     protected $fillable = ['nama_pemilik', 'id_asosiasi_kapal'];
-    public $sortable = ['nama_pemilik','id_pemilik','id_asosiasi_kapal'];
+    public $sortable = ['id_pemilik','nama_pemilik','id_pemilik','id_asosiasi_kapal'];
 
     public function asosiasi(){
      return $this->belongsTo(AsosiasiKapal::class,'id_asosiasi_kapal');

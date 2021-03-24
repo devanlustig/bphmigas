@@ -16,7 +16,7 @@ class PemilikController extends Controller
     public function index()
     {
 
-      $pemilik = Pemilik::sortable()->paginate(5);
+      $pemilik = Pemilik::sortable(['id_pemilik'=>'desc'])->paginate(10);
       $asosiasi = AsosiasiKapal::all(['id','asosiasi_kapal']);
 
       return view('pemilik.index',compact('pemilik','asosiasi'))

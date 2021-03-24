@@ -14,7 +14,7 @@ class UsulanKuotaPerPeriode extends Model
 	protected $table= "usulan_kuota_per_periode";
 	protected $primaryKey = 'id_usulan_kuota';
 	protected $fillable = ['id_kapal', 'id_tbbm', 'id_periode','id_lintasan_operasi','kecepatan','jarak','jumlah_trip','kuota'];
-	public $sortable = ['id_kapal', 'id_tbbm', 'id_periode','id_lintasan_operasi','kecepatan','jarak','jumlah_trip','kuota'];
+	public $sortable = ['id_usulan_kuota','id_kapal', 'id_tbbm', 'id_periode','id_lintasan_operasi','kecepatan','jarak','jumlah_trip','kuota'];
 
 	public $timestamps = false;
 
